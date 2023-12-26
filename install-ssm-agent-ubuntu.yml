@@ -1,0 +1,30 @@
+---
+- name: Descargar e instalar el agente SSM
+  get_url:
+    url: "https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/debian_amd64/amazon-ssm-agent.deb"
+    dest: "/tmp/amazon-ssm-agent.deb"
+  become: yes
+
+- name: Instalar el agente SSM
+  apt:
+    deb: "/tmp/amazon-ssm-agent.deb"
+  become: yes
+
+# Ir a esta ruta en Ubuntu: 
+
+# cd /mnt/c/Users/simpl/ansible
+
+# Ejecutar el playbook:
+
+# ansible-playbook -i localhost, install-ssm-agent-ubuntu.yml
+
+# Con este comando se verifica el estado del SSM agent:
+
+# sudo systemctl status amazon-ssm-agent
+
+
+
+
+
+
+

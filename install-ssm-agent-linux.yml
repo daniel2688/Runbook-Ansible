@@ -1,0 +1,19 @@
+---
+- name: Install AWS SSM Agent on Local Linux
+  hosts: localhost
+  connection: local
+  become: true
+  tasks:
+    - name: Download and install SSM Agent
+      shell: |
+        curl -s https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/debian_amd64/amazon-ssm-agent.deb -o /tmp/amazon-ssm-agent.deb
+        dpkg -i /tmp/amazon-ssm-agent.deb
+
+    - name: Start SSM Agent
+      command: /usr/bin/amazon-ssm-agent
+
+
+
+
+# Luego ejecutar:
+# ansible-playbook -i localhost, install-ssm-agent.yml

@@ -1,0 +1,24 @@
+---
+- name: Mi primer playbook
+  hosts: localhost
+  tasks:
+    - name: Actualizar lista de paquetes
+      apt:
+        update_cache: yes
+
+    - name: Instalar Apache
+      apt:
+        name: apache2
+        state: present
+
+
+
+
+# Para instalar Apache2 ejecutar playbook: 
+
+ansible-playbook mi_playbook.yml
+
+# Para validar si esta instalado el Apache2:
+
+systemctl is-active apache2
+
